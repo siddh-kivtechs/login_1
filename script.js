@@ -35,7 +35,13 @@ loginForm.addEventListener("submit", (e) => {
 	const email = document.querySelector(".login__input[type='email']").value;
 	const password = document.querySelector(".login__input[type='password']").value;
 	const emailHash=atob(email);	
-	  const passwordHash = await sha256(password); 
+	async function sha256(password) {
+  	const hasher = hashlib.sha256();
+  	hasher.update(password.encode());
+ 	 return hasher.hexdigest();	
+	}
+
+const passwordHash = await sha256(password);
 
 	// Create an object with the login data
 	const loginData = {
