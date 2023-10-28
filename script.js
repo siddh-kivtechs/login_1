@@ -140,7 +140,9 @@ function displayAuthStatus(status, nextUri) {
   
   // Append the popup to the body  
   document.body.appendChild(popup);  
-  
+    setTimeout(() => {  
+    popup.remove();  
+  }, 10000); 
   // Redirect to the next URI if it exists  
   if (nextUri) {  
     setTimeout(() => {  
@@ -148,4 +150,8 @@ function displayAuthStatus(status, nextUri) {
     }, 2000); // Redirect after 2 seconds  
   }  
 }  
+  
+ 
+  
+
 
