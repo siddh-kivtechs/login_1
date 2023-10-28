@@ -42,7 +42,7 @@ loginForm.addEventListener("submit", (e) => {
 	};
 
 	// Post the login data to the endpoint
-	fetch("https://kivtechs.cloud/", {
+	fetch("https://py-vercel-sage.vercel.app/auth/", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
