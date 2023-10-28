@@ -62,6 +62,7 @@ loginForm.addEventListener("submit", async (e) => {
   console.log(loginData);  
   
   // Post the login data to the TEST endpoint  
+	// Modify the fetch() call to handle the authentication response
   fetch("https://py-vercel-sage.vercel.app/auth/", {  
     method: "POST",  
     headers: {  
@@ -70,16 +71,27 @@ loginForm.addEventListener("submit", async (e) => {
     body: JSON.stringify(loginData)  
   })  
     .then(response => response.json())  
-    .then(data => {  
-      // Handle the response from the server  
-      console.log(data);  
-      // Redirect to a new page or perform other actions based on the response  
-    })  
+   .then(data => {
+    // Check the authentication status
+    if (data.status === "auth success") {
+      // Display a success message and redirect to the next URI
+      displayAuthStatus("success", data.next_uri);
+    } else {
+      // Display an error message
+      displayAuthStatus("fail", null);
+    }
+  }) 
     .catch(error => {  
       // Handle any errors that occur during the request  
       console.error(error);  
     });  
 });  
+
+
+
+  .then(response => response.json())
+  
+
   
 function validateEmail(email) {  
   // Use regular expression to validate email format  
@@ -114,3 +126,17 @@ async function sha256(message) {
 	const hashHex = hashArray.map((b) => ("00" + b.toString(16)).slice(-2)).join("");  
 	return hashHex;  
 }  
+
+// Add a new function to display the authentication status
+function displayAuthStatus(status, nextUri) {
+  // Display the authentication status message
+  const authStatusMessage = document.createElement("div");
+  authStatusMessage.className = `auth-status ${status}`;
+  authStatusMessage.innerText = status;
+  document.body.appendChild(authStatusMessage);
+
+  // Redirect to the next URI if it exists
+  if (nextUri) {
+    window.location.href = nextUri;
+  }
+}
