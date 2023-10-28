@@ -224,3 +224,30 @@ img {
 		font-size: 2rem;
 	}
 }
+
+/*  popup added */
+.popup {  
+  position: fixed;  
+  top: 50%;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
+  background-color: rgba(0, 0, 0, 0.8);  
+  color: var(--white-color);  
+  padding: 1.5rem;  
+  border-radius: 0.5rem;  
+  z-index: 9999;  
+}  
+  
+.auth-status {  
+  font-size: var(--h1-font-size);  
+  font-weight: var(--font-medium);  
+  text-align: center;  
+}  
+  
+.success {  
+  background-color: #2ecc71;  
+}  
+  
+.fail {  
+  background-color: #e74c3c;  
+}  
