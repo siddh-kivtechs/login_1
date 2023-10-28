@@ -34,14 +34,17 @@ loginForm.addEventListener("submit", (e) => {
 	// Get the values from the form inputs
 	const email = document.querySelector(".login__input[type='email']").value;
 	const password = document.querySelector(".login__input[type='password']").value;
+	const emailHash=atob(email);	
+	  const passwordHash = await sha256(password); 
 
 	// Create an object with the login data
 	const loginData = {
-		email: email,
-		password: password
+		email: emailHash,
+		password: passwordHash
 	};
+	console.log(loginData);
 
-	// Post the login data to the endpoint
+	// Post the login data to the TEST endpoint
 	fetch("https://py-vercel-sage.vercel.app/auth/", {
 		method: "POST",
 		headers: {
