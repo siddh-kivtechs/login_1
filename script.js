@@ -125,15 +125,27 @@ async function sha256(message) {
 }  
 
 // Add a new function to display the authentication status
-function displayAuthStatus(status, nextUri) {
-  // Display the authentication status message
-  const authStatusMessage = document.createElement("div");
-  authStatusMessage.className = `auth-status ${status}`;
-  authStatusMessage.innerText = status;
-  document.body.appendChild(authStatusMessage);
+function displayAuthStatus(status, nextUri) {  
+  // Create a popup element  
+  const popup = document.createElement("div");  
+  popup.className = "popup";  
+  
+  // Create the status message element  
+  const statusMessage = document.createElement("div");  
+  statusMessage.className = `auth-status ${status}`;  
+  statusMessage.innerText = status;  
+  
+  // Append the status message to the popup  
+  popup.appendChild(statusMessage);  
+  
+  // Append the popup to the body  
+  document.body.appendChild(popup);  
+  
+  // Redirect to the next URI if it exists  
+  if (nextUri) {  
+    setTimeout(() => {  
+      window.location.href = nextUri;  
+    }, 2000); // Redirect after 2 seconds  
+  }  
+}  
 
-  // Redirect to the next URI if it exists
-  if (nextUri) {
-    window.location.href = nextUri;
-  }
-}
