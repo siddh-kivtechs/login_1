@@ -87,9 +87,6 @@ loginForm.addEventListener("submit", async (e) => {
     });  
 });  
 
-
-
-  .then(response => response.json())
   
 
   
