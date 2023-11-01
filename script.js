@@ -73,7 +73,7 @@ loginForm.addEventListener("submit", async (e) => {
     .then(response => response.json())  
    .then(data => {
     // Check the authentication status
-    if (data.status === "auth success") {
+    if (data.auth === "auth success") {
       // Display a success message and redirect to the next URI
       displayAuthStatus("success", data.next_uri);
     } else {
