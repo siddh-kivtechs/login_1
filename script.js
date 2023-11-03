@@ -87,7 +87,19 @@ loginForm.addEventListener("submit", async (e) => {
     });  
 });  
 
-  
+
+function displayAuthStatus(status, nextUri) {  
+  if (status === "success") {  
+    // Display success message  
+    console.log("Authentication successful");  
+    // Redirect to the next URI  
+    window.location.href = nextUri;  
+  } else {  
+    // Display error message  
+    console.log("Authentication failed");  
+  }  
+}  
+
 
   
 function validateEmail(email) {  
